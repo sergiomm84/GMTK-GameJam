@@ -126,7 +126,7 @@ scale = Vector2(1.8793, 1.08875)
 zoom = Vector2(2.76, 2.76)
 
 [node name="Node2D" parent="." node_paths=PackedStringArray("planet") instance=ExtResource("1_lgngo")]
-position = Vector2(206, -196)
+position = Vector2(290, -125)
 planet = NodePath("../Planet")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
