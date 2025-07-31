@@ -1,0 +1,157 @@
+[gd_scene load_steps=16 format=3 uid="uid://dctalm4vp77ca"]
+
+[ext_resource type="Texture2D" uid="uid://dj8tj5te7nsuh" path="res://Assets/dither4.png" id="1_eqxnr"]
+[ext_resource type="PackedScene" uid="uid://csd5ac0meyqwj" path="res://Planet2.tscn" id="2_eqxnr"]
+[ext_resource type="PackedScene" uid="uid://ddb2htlgb567v" path="res://Player.tscn" id="3_b438p"]
+[ext_resource type="Texture2D" uid="uid://ccahijppsrsi4" path="res://Assets/loop_block.png" id="4_n6t2q"]
+[ext_resource type="Script" uid="uid://3dtfjuiu4siw" path="res://Player2.gd" id="4_xhlkw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aou4a"]
+atlas = ExtResource("4_n6t2q")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ckkb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aou4a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otwa2"]
+size = Vector2(20, 31.7741)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhlkw"]
+atlas = ExtResource("4_n6t2q")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b438p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhlkw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6t2q"]
+atlas = ExtResource("4_n6t2q")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nkm6j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6t2q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8shw"]
+atlas = ExtResource("4_n6t2q")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uk1g5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8shw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pan8f"]
+size = Vector2(25, 81)
+
+[node name="Mundo3" type="Node2D"]
+
+[node name="Dither4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(204, -101)
+scale = Vector2(0.837577, 0.834758)
+texture = ExtResource("1_eqxnr")
+
+[node name="Planet2" parent="." instance=ExtResource("2_eqxnr")]
+position = Vector2(207, -96)
+scale = Vector2(0.76, 0.76)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 218.0
+offset_top = -193.0
+offset_right = 232.0
+offset_bottom = -118.0
+rotation = 0.123621
+color = Color(0.764706, 0.764706, 0.764706, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 205.0
+offset_top = -122.0
+offset_right = 219.0
+offset_bottom = -47.0
+rotation = -0.0422661
+scale = Vector2(0.35719, 0.182122)
+color = Color(0.202964, 0.0150166, 0.0307566, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 182.0
+offset_top = -124.0
+offset_right = 196.0
+offset_bottom = -49.0
+rotation = -0.424991
+scale = Vector2(1.57961, 0.212112)
+color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(204, -104)
+rotation = 1.5708
+scale = Vector2(1.8793, 1.08875)
+zoom = Vector2(2.76, 2.76)
+
+[node name="Node2D" parent="." node_paths=PackedStringArray("planet") instance=ExtResource("3_b438p")]
+position = Vector2(202, -241)
+script = ExtResource("4_xhlkw")
+planet = NodePath("../Planet2")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(107, -158)
+rotation = -1.22464
+gravity_scale = 0.012
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+sprite_frames = SubResource("SpriteFrames_5ckkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+process_physics_priority = 1
+position = Vector2(-1, -4.29997)
+scale = Vector2(1, 1.24)
+shape = SubResource("RectangleShape2D_otwa2")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(97, 0)
+rotation = -2.30505
+
+[node name="rocket" type="Node2D" parent="RigidBody2D2"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D2/rocket"]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_b438p")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="RigidBody2D2/rocket"]
+sprite_frames = SubResource("SpriteFrames_nkm6j")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="RigidBody2D2/rocket"]
+position = Vector2(0, 32)
+sprite_frames = SubResource("SpriteFrames_uk1g5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(0.5, 6.5)
+shape = SubResource("RectangleShape2D_pan8f")

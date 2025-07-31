@@ -73,13 +73,16 @@ script = ExtResource("1_kpjcp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.18557e-08, -0.500001)
+scale = Vector2(0.252605, 0.252605)
 shape = SubResource("RectangleShape2D_e80uo")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+scale = Vector2(0.252605, 0.252605)
 target_position = Vector2(51, -2.22928e-06)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.5708
+scale = Vector2(0.252605, 0.252605)
 sprite_frames = SubResource("SpriteFrames_wi0c6")
 animation = &"Jump"
 flip_h = true

@@ -1,11 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bqfaxhl8nwo1p"]
+[gd_scene load_steps=13 format=3 uid="uid://bqfaxhl8nwo1p"]
 
 [ext_resource type="Texture2D" uid="uid://dj8tj5te7nsuh" path="res://Assets/dither4.png" id="1_fw4w5"]
 [ext_resource type="PackedScene" uid="uid://ddb2htlgb567v" path="res://Player.tscn" id="1_lgngo"]
 [ext_resource type="PackedScene" uid="uid://1swxy5i7vs57" path="res://Planet.tscn" id="2_fw4w5"]
 [ext_resource type="Texture2D" uid="uid://ccahijppsrsi4" path="res://Assets/loop_block.png" id="4_otwa2"]
 [ext_resource type="Texture2D" uid="uid://c63dwlfvu6bgr" path="res://Assets/loop_planet.png" id="5_aou4a"]
-[ext_resource type="PackedScene" uid="uid://csd5ac0meyqwj" path="res://Planet2.tscn" id="6_5ckkb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aou4a"]
 atlas = ExtResource("4_otwa2")
@@ -53,59 +52,12 @@ var rotation_speed_degrees = 1.0  # Degrees per second
 
   
 func _ready() -> void:
-	timey.start(.1)
+	timey.start(1)
 	
 
 func _on_timer_timeout() -> void:
-	#rotation_degrees.y += rotation_speed_degrees * 1.0 # Rotate around the Y axis
-	#Make the planet drag you up. Certain distance
-	rotate(deg_to_rad(rotation_speed_degrees))
+	rotation_degrees.y += rotation_speed_degrees +1  # Rotate around the Y axis
 "
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhlkw"]
-atlas = ExtResource("4_otwa2")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2hh7m"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xhlkw")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n6t2q"]
-atlas = ExtResource("4_otwa2")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t8jxu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n6t2q")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8shw"]
-atlas = ExtResource("4_otwa2")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pfhxm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k8shw")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Mundo" type="Node2D"]
 
@@ -158,36 +110,12 @@ shape = SubResource("RectangleShape2D_5ckkb")
 
 [node name="satellite" type="Sprite2D" parent="."]
 position = Vector2(207, -102)
-rotation = 2.13626
+rotation = 1.22173
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("5_aou4a")
 offset = Vector2(-672, 800)
 script = SubResource("GDScript_5ckkb")
 
-[node name="Planet" parent="satellite" instance=ExtResource("6_5ckkb")]
-position = Vector2(-667.32, 804.266)
-
 [node name="Timer" type="Timer" parent="satellite"]
-
-[node name="rocket" type="Node2D" parent="."]
-position = Vector2(207, -101)
-rotation = -0.707796
-
-[node name="Sprite2D" type="Sprite2D" parent="rocket"]
-position = Vector2(-211.586, 9.33215)
-offset = Vector2(211.586, -9.33215)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rocket/Sprite2D"]
-position = Vector2(3.8147e-06, -32)
-sprite_frames = SubResource("SpriteFrames_2hh7m")
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="rocket/Sprite2D"]
-sprite_frames = SubResource("SpriteFrames_t8jxu")
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="rocket/Sprite2D"]
-position = Vector2(0, 32)
-sprite_frames = SubResource("SpriteFrames_pfhxm")
-
-[node name="Timer" type="Timer" parent="rocket/Sprite2D"]
 
 [connection signal="timeout" from="satellite/Timer" to="satellite" method="_on_timer_timeout"]

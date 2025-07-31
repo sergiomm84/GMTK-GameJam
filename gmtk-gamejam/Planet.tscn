@@ -2,8 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c63dwlfvu6bgr" path="res://Assets/loop_planet.png" id="1_2hiue"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8g7i6"]
-radius = 128.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hiue"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_485rr"]
 radius = 487.986
@@ -14,7 +13,8 @@ radius = 487.986
 texture = ExtResource("1_2hiue")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_8g7i6")
+scale = Vector2(13.04, 13.04)
+shape = SubResource("CircleShape2D_2hiue")
 
 [node name="Gravedad" type="Area2D" parent="."]
 gravity_space_override = 3
