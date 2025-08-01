@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4ll2o4rqkrny"]
+
+[ext_resource type="Texture2D" uid="uid://bsp7hqspgawsf" path="res://Assets/planetloop_menu.png" id="1_06t4h"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlanetloopMenu" type="Sprite2D" parent="."]
+position = Vector2(574, 328)
+texture = ExtResource("1_06t4h")
